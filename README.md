@@ -5,7 +5,6 @@ Este repositório é um registro da minha constância e evolução na programaç
 ## 🛠️ Tecnologias e Recursos
 * **Python 3.x**
 * **Rich:** Utilizada para construir interfaces de terminal (CLI) profissionais, coloridas e bem estruturadas.
-* **Time:** Implementação de temporização para melhorar a interatividade e o fluxo da aplicação.
 
 ## 🚀 Diferenciais dos Projetos
 Em vez de scripts estáticos, cada desafio é desenvolvido com foco em:
