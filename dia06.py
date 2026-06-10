@@ -82,3 +82,4 @@ except KeyboardInterrupt:
     print()
     print(Panel("[bold yellow]:warning: Operação interrompida pelo usuário.[/bold yellow]", border_style="yellow"))
     print()
+
