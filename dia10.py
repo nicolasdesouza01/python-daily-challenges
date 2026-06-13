@@ -6,26 +6,35 @@ from rich.table import Table
 
 console = Console()
 
-def voto(ano_nascimento):
-    ano_atual = 2026
-    idade = ano_atual - ano_nascimento
-    
-    if idade < 0:
-        return ":alien: [bold red]ANO INVÁLIDO[/bold red]"
-    
-    if idade < 16:
-        return f"Com {idade} anos: :prohibited: VOTO NEGADO."
-    elif 16 <= idade < 18 or idade >= 70:
-        return f"Com {idade} anos: :envelope_with_arrow: VOTO OPCIONAL."
-    else:
-        return f"Com {idade} anos: :heavy_check_mark: VOTO OBRIGATÓRIO."
+class AnalisadorEleitoral:
+
+    def __init__(self, ano_nascimento):
+        self._ano_nascimento = ano_nascimento
+        self._ano_atual = 2026
+
+    def _calcular_idade(self):
+        return self._ano_atual - self._ano_nascimento
+
+    def obter_relatorio(self):
+        idade = self._calcular_idade()
+        
+        if idade < 0 or idade > 125:
+            return "Inconsistente", ":alien: [bold red]ANO DE NASCIMENTO INVÁLIDO[/bold red]"
+            
+        if idade < 16:
+            return f"{idade} anos", ":prohibited: [bold red]VOTO NEGADO[/bold red]"
+        elif 16 <= idade < 18 or idade >= 70:
+            return f"{idade} anos", ":envelope_with_arrow: [bold yellow]VOTO OPCIONAL[/bold yellow]"
+        else:
+            return f"{idade} anos", ":heavy_check_mark: [bold green]VOTO OBRIGATÓRIO[/bold green]"
 
 
-console.print(Panel(":computer: [bold blue]SISTEMA DE CONSULTA ELEITORAL PROFISSIONAL[/bold blue] :computer:", expand=False))
+console.print("\n")
+console.print(Panel.fit(" :computer: [bold white]SISTEMA DE CONSULTA ELEITORAL PROFISSIONAL[/bold white] :computer: ", style="bold blue"))
+console.print("\n")
 
 while True:
     try:
-        print("\n" + "—" * 60)
         entrada = input("Digite o ano de nascimento (ou 'S' para sair): ").strip()
 
         if entrada.upper() == 'S':
@@ -33,29 +42,31 @@ while True:
             break
 
         if not entrada:
-            console.print("\n:warning: [bold yellow]Atenção: Nenhuma informação foi digitada![/bold yellow]")
+            console.print("\n:warning: [bold yellow]Atenção: Nenhuma informação foi digitada![/bold yellow]\n")
             continue
-        
+
         nascimento = int(entrada)
 
-        with console.status("[bold green]Consultando base de dados...[/bold green]", spinner="aesthetic"):
+        console.print("\n")
+        with console.status("[bold green]Consultando base de dados nacional...[/bold green]", spinner="aesthetic"):
             sleep(1.2)
 
-        resultado = voto(nascimento)
+        analisador = AnalisadorEleitoral(nascimento)
+        idade_formatada, status_voto = analisador.obter_relatorio()
 
-        tabela = Table(title="[bold magenta]BOLETIM INFORMATIVO[/bold magenta]", show_header=True, header_style="bold yellow")
+        tabela = Table(title="[bold magenta]:page_facing_up: BOLETIM INFORMATIVO OFICIAL[/bold magenta]", show_header=True, header_style="bold cyan")
         
-        tabela.add_column("Critério", justify="center", style="cyan")
+        tabela.add_column("Critério de Análise", justify="left", style="bold white")
         tabela.add_column("Resultado do Sistema", justify="center", style="bright_white")
 
-        tabela.add_row("Status Eleitoral", resultado)
+        tabela.add_row("Idade Real do Cidadão", idade_formatada)
+        tabela.add_row("Status da Obrigação", status_voto)
 
-        console.print("\n")
         console.print(tabela)
-        console.print("\n")
+        console.print("\n" + "—" * 60 + "\n")
 
     except ValueError:
-        console.print("\n:x: [bold red]ERRO DE ENTRADA:[/bold red] Por favor, insira um ano válido com 4 dígitos ou 'S' para sair.")
+        console.print("\n:x: [bold red]ERRO DE ENTRADA:[/bold red] Por favor, insira um ano válido com 4 dígitos ou 'S' para sair.\n")
 
     except Exception as erro:
-        console.print(f"\n:warning: [bold red]OCORREU UM PROBLEMA:[/bold red] {erro}")
+        console.print(f"\n:warning: [bold red]OCORREU UM PROBLEMA INESPERADO:[/bold red] {erro}\n")
