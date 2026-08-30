@@ -1,19 +1,31 @@
-# 🐍 Python Daily Challenges
+# Python Daily Challenges
 
-Este repositório é um registro da minha constância e evolução na programação com Python. O objetivo principal é a resolução de desafios diários para consolidar o domínio da linguagem, explorando desde a lógica algorítmica fundamental até os pilares da Programação Orientada a Objetos (POO).
+*03/05/2026 – 29/08/2026 · (107 Arquivos/dias)*
 
-## 🛠️ Tecnologias e Recursos
-* **Python 3.x**
-* **Rich:** Utilizada para construir interfaces de terminal (CLI) profissionais, coloridas e bem estruturadas.
+Repositório de treino diário em Python: um arquivo por dia, com o objetivo de consolidar a linguagem através da prática constante, cobrindo desde lógica algorítmica básica até tópicos mais avançados.
 
-## 🚀 Diferenciais dos Projetos
-Em vez de scripts estáticos, cada desafio é desenvolvido com foco em:
-* **Interatividade:** Uso de loops de repetição que permitem múltiplas consultas em uma única execução.
-* **UX (User Experience):** Interfaces visuais amigáveis, com feedback claro para o usuário.
-* **Consistência de Dados:** Tratamento e padronização de strings e entradas para garantir a estabilidade do código.
+## Sobre o projeto
 
-## 📂 Organização
-Os arquivos são nomeados por dias de atividade (`dia01.py`, `dia02.py`, etc.), refletindo o progresso contínuo e a prática diária de codificação.
+ Ao longo dos 107 dias, o escopo foi ampliado progressivamente e passou a incluir:
+
+- Lógica de programação e estruturas de dados
+- Programação Orientada a Objetos (POO)
+- Consumo de APIs
+- Aplicação de regras de negócio/mercado
+- Otimização de código
+- Tratamento robusto de exceções e validação de entradas
+
+O maior resultado do repositório não é um arquivo específico, mas a constância da prática ao longo desse período.
+
+## Tecnologias
+
+- Python 3.x
+- [Rich](https://github.com/Textualize/rich) — construção de interfaces de terminal (CLI)
+
+## Organização
+
+Os arquivos são nomeados por dia de atividade (`dia01.py` a `dia107.py`), preservando o histórico de evolução ao longo do projeto.
 
 ---
-*Estudante de Análise e Desenvolvimento de Sistemas (ADS) - UniCesumar.*
+
+Estudante de Análise e Desenvolvimento de Sistemas (ADS) — UniCesumar.
